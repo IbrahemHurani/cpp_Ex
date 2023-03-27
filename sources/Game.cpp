@@ -1,6 +1,6 @@
 #include <string>
 #include <stdexcept>
-#include "game.cpp"
+#include "game.hpp"
 using namespace std;
 Game::Game(){
 
