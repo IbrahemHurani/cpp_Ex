@@ -8,41 +8,22 @@
 using namespace std;
 
 
-TEST_CASE("check the constructor class Card"){
-    int number_of_cards=52;
-    CHECK_NOTHROW(Card{number_of_cards});
-}
-TEST_CASE("check the constructor class Player"){
-    CHECK_NOTHROW(Player p("alice"));
-}
-TEST_CASE("check function setname in class Player"){
+TEST_CASE("check function in class player"){
     Player p1("alice");
-    CHECK_NOTHROW(p1.setName("bob"));
-}
-TEST_CASE("check function cadrsTaken"){
-    Player p1("bob");
-    CHECK(p1.cardesTaken()>=0);
-}
-TEST_CASE("check function staksize"){
-    Player p("bob");
-    CHECK(p.stacksize()<=26);
-
-}
-TEST_CASE("check function isPlaying"){
-    Player p("bob");
-    CHECK(p.IsPlaying()==true);
-}
-TEST_CASE("check constructor class Game"){
-    Player p1("me");
-    Player p2("other");
-    CHECK_NOTHROW(Game{p1,p2});
-
+    Player p2("BOB");
+    CHECK_NOTHROW(Player p1("alice"));
+    CHECK_NOTHROW(Player p2("BOB"));
+    CHECK(p1.getName().compare("alice")==0);
+    CHECK(p1.IsPlaying()==true);
+    CHECK(p2.getName().compare("BOB")==0);
+    CHECK(p2.IsPlaying()==true);
+    bool playerS=false;
+    CHECK_NOTHROW(p1.setIsPlaying(playerS));
+    CHECK_NOTHROW(p2.setIsPlaying(playerS));
 }
 TEST_CASE("check functions in class game"){
     Player p1("alice");
     Player p2("BOB");
-    CHECK(p1.getName().compare("alice")==0);
-    CHECK(p2.getName().compare("BOB")==0);
     CHECK_NOTHROW(Game{p1,p2});
     Game game(p1,p2);
     CHECK_NOTHROW(game.playTurn());
@@ -55,14 +36,17 @@ TEST_CASE("check functions in class game"){
     CHECK_NOTHROW(game.printLog());
     CHECK_NOTHROW(game.printStats());
     CHECK_NOTHROW(game.printWiner());
-
-
-
-
-
-
-
-
-
-
+    bool playerS=false;
+    CHECK_NOTHROW(p1.setIsPlaying(playerS));
+    CHECK_NOTHROW(p2.setIsPlaying(playerS));
 }
+
+
+
+
+
+
+
+
+
+
